@@ -4,7 +4,7 @@
 #include <cmath>
 
 #include "reflect/Reflect.h"
-#include "Vector"
+#include "Vector.h"
 #include "DDLog.h"
 #include "LuaState.h"
 #include "DinodeckGL.h"

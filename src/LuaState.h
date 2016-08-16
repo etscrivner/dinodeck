@@ -47,7 +47,7 @@ public:
 	std::string GetString(const char* key, const char* defaultStr);
     bool GetBoolean(const char* key, bool defaultBool);
 	unsigned int ItemsInStack();
-	void Bind(const std::string& name, const luaL_Reg* luaBinding);
+	void Bind(const std::string& name, const luaL_reg* luaBinding);
 	void CollectGarbage();
 	void InjectIntoRegistry(const char* key, void* value);
     void CallRegisteredFunction(int index);

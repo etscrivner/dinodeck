@@ -102,7 +102,7 @@ unsigned int DDFile::Read(void* target, unsigned int size, /*unsigned int count,
     char* targetPtr = (char*)target;
 
     // Copy data byte by byte
-    int i = 0;
+    unsigned int i = 0;
     while(i < size)
     {
         *targetPtr++ = *sourcePtr++;

@@ -5,6 +5,14 @@
 
 class LuaState;
 
+#if __linux__
+
+#ifdef None
+#undef None
+#endif // None
+
+#endif // __linux__
+
 namespace TouchEvent
 {
     enum Enum

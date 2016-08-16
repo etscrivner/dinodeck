@@ -16,6 +16,18 @@
 #include "TextureManager.h"
 #include "FrameBuffer.h"
 
+#if __linux__
+
+// Undefine SDL Macros
+#ifdef DisplayWidth
+  #undef DisplayWidth
+#endif // DisplayWidth
+
+#ifdef DisplayHeight
+  #undef DisplayHeight
+#endif // DisplayHeight
+
+#endif // __linux__
 
 class FTTextureFont;
 Dinodeck* Dinodeck::Instance = NULL;

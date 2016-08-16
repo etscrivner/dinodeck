@@ -1,7 +1,7 @@
 #include "Wave.h"
 
 #include <stdio.h>
-#if __APPLE__
+#if __APPLE__ || __linux__
 #include <stdint.h>
 #else
 //typedef unsigned long uint32_t;

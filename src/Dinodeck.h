@@ -18,6 +18,19 @@ class IScreenChangeListener;
 class DDAudio;
 class FrameBuffer;
 
+#if __linux__
+
+// Undefine SDL Macros
+#ifdef DisplayWidth
+  #undef DisplayWidth
+#endif // DisplayWidth
+
+#ifdef DisplayHeight
+  #undef DisplayHeight
+#endif // DisplayHeight
+
+#endif // __linux__
+
 class Dinodeck : IAssetOwner
 {
 private:

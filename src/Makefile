@@ -32,7 +32,7 @@ SOURCES= \
 	Dinodeck.cpp \
 	DDLog_Windows.cpp \
 	DDTime.cpp \
-	WebServer.cpp \
+	Webserver.cpp \
 	Character.cpp \
     FormatText.cpp \
 	GraphicsPipeline.cpp \
@@ -81,7 +81,7 @@ ifeq (${PLATFORM_DD},MAC)
 
 	CFLAGS+= -I/opt/local/include -I/opt/local/include/luajit-2.0
 	CFLAGS+= -I/opt/X11/include/freetype2
-   	CFLAGS+= -I../lib/ftgl/src
+	CFLAGS+= -I../lib/ftgl/src
 	CFLAGS+= -I../lib/mongoose
 	CFLAGS+= -I../lib/openal-soft/include
 
@@ -115,6 +115,28 @@ ifeq (${PLATFORM_DD},MAC)
 	LDFLAGS+=/opt/local/lib/libbz2.a -lbz2
 endif
 
+ifeq (${PLATFORM_DD},LINUX)
+	CFLAGS=-c -Wall
+
+	SDLLIBS=$(shell sdl-config --libs)
+
+	SOURCES:=../lib/glee/GLee.c $(SOURCES)
+
+	CFLAGS+= \
+	-I../lib/LuaJIT/src \
+	-I../lib/physfs  \
+	-I../lib/soil/src \
+	-I../lib/ftgl/src \
+	-I../lib/freetype/include \
+	-I../lib/mongoose \
+	-I../lib/openal-soft/include \
+	-I../lib/glee \
+	-I../lib/soil/src
+
+	LDFLAGS= $(SDLLIBS) -lSOIL -lopenal -lGL -lGLU -lm -lphysfs -lftgl
+	LDFLAGS+=../lib/LuaJIT/src/libluajit.a
+endif
+
 
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=dinodeck
@@ -124,7 +146,7 @@ default: mingw
 mingw: $(SOURCES) $(EXECUTABLE)
 
 clean:
-	rm *.o *.exe
+	rm -f *.o *.exe
 
 $(EXECUTABLE): $(OBJECTS)
 	$(CC) -o $@ $? $(LDFLAGS)

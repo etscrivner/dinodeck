@@ -7,6 +7,13 @@
 
 #include <OpenGL/gl.h>
 #define glOrthof glOrtho
+
+#elif __linux__
+
+#include "GLee.h"
+#include <GL/gl.h>
+
+#define glOrthof glOrtho
 #else
 
 #include "GLee.h"

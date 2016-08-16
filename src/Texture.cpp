@@ -15,7 +15,7 @@
 #include "Game.h"
 #include "LuaState.h"
 #include "reflect/Reflect.h"
-#include "soil.h"
+#include "SOIL.h"
 #include "TextureManager.h"
 
 Reflect Texture::Meta("Texture", Texture::Bind);

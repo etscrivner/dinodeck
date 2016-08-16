@@ -239,7 +239,7 @@ void* LuaState::GetFromRegistry(lua_State* state, const char* key)
     return object;
 }
 
-void LuaState::Bind(const std::string& name, const luaL_Reg* luaBinding)
+void LuaState::Bind(const std::string& name, const luaL_reg* luaBinding)
 {
     const char* id = name.c_str();
     lua_newtable(mLuaState);

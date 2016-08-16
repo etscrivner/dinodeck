@@ -3,7 +3,7 @@
 #include <assert.h>
 #include <string>
 
-#include "DDlog.h"
+#include "DDLog.h"
 #include "LuaState.h"
 #include "DinodeckLua.h"
 

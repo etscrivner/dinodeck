@@ -4,7 +4,7 @@
 #include <string>
 
 #include "IScreenChangeListener.h"
-#include "IWebServerCallback.h"
+#include "IWebserverCallback.h"
 
 class	Dinodeck;
 struct	SDL_Surface;

@@ -12,7 +12,7 @@
 
 #define MAX_PORT_NUMBER 65535
 
-#if __APPLE__
+#if __APPLE__ || __linux__
 int itoa(int value, char *buf, size_t sz)
 {
     return snprintf(buf, sz, "%d", value);

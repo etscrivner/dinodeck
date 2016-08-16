@@ -15,6 +15,19 @@
 #include "Webserver.h"
 #include "LuaState.h"
 
+#if __linux__
+
+// Undefine SDL Macros
+#ifdef DisplayWidth
+  #undef DisplayWidth
+#endif // DisplayWidth
+
+#ifdef DisplayHeight
+  #undef DisplayHeight
+#endif // DisplayHeight
+
+#endif // __linux__
+
 Main::Main() :
   mSurface(0),
   mRunning(true),
@@ -84,6 +97,21 @@ bool Main::ResetRenderWindow()
     unsigned int width = mDinodeck->DisplayWidth();
     unsigned int height = mDinodeck->DisplayHeight();
     SDL_WM_SetCaption(name, name);
+
+    const SDL_VideoInfo* videoInfo = SDL_GetVideoInfo();
+    if (!videoInfo) {
+        printf("Video query failed: %s\n", SDL_GetError());
+        return false;
+    }
+
+    printf("[VIDEO INFO]\n");
+    printf("HW Available: %d\n", videoInfo->hw_available);
+    printf("WM Available: %d\n", videoInfo->wm_available);
+    printf("Blit HW: %d\n", videoInfo->blit_hw);
+    printf("Video Mem: %d KB\n", videoInfo->video_mem);
+    printf("BitsPerPixel: %d\n", videoInfo->vfmt->BitsPerPixel);
+    printf("ColorKey: %d\n", videoInfo->vfmt->colorkey);
+    printf("Alpha: %d\n", videoInfo->vfmt->alpha);
 
     // SDL handles this surface memory, so it can be called multiple times without issue.
     if((mSurface = SDL_SetVideoMode(width, height, 32, SDL_HWSURFACE | SDL_GL_DOUBLEBUFFER | SDL_OPENGL)) == NULL)

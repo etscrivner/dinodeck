@@ -14,7 +14,7 @@
 #include "LuaState.h"
 #include "Sprite.h"
 #include "Texture.h"
-#include "Vector"
+#include "Vector.h"
 
 std::vector<Renderer*> Renderer::mRenderers;
 const float Renderer::TextScale = 4.0;
